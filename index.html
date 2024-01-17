@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/ico/undraw_People_re_8spw_resized.ico" type="image/x-icon">
+    <title>FOLLOWSHOP</title>
+    
+    <style>
+        body {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            background-color: rgb(207, 207, 207);
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .produtos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin: 20px;
+        }
+        .itens {
+            background-color: white;
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 10px;
+            width: 250px;
+            cursor: pointer;
+        }
+        h1 {
+            margin-top: 20px;
+            color: rgb(240, 17, 155);
+        }
+        img {
+            width: 100%;
+            height: auto;
+            max-width: 200px;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            background-color: rgb(240, 17, 155);
+            color: white;
+            border-radius: 5px;
+        }
+        svg{
+            color: white;
+        }
+        .fixed-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+        }
+
+        /* Estilos do Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 400px;
+            text-align: center;
+        }
+        .close-btn {
+            background-color: rgb(240, 17, 155);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center; font-size: 3pc;">COMPRE SEUS SEGUIDORES</h1>
+    <br>
+    <button class="fixed-button" onclick="alternarOrdenacao()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-arrow-down-up" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5m-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5"/>
+        </svg>
+    </button>
+    <div class="produtos" id="produtosContainer">
+        <div class="itens" onclick="abrirModal('100 SEGUIDORES', 'R$3,00')">
+            <h1>100 SEGUIDORES</h1>
+            <img src="undraw_People_re_8spw.png" alt="Imagem 1">
+            <button>R$3,00</button>
+        </div>
+        <div class="itens" onclick="abrirModal('200 SEGUIDORES', 'R$6,00')">
+            <h1>200 SEGUIDORES</h1>
+            <img src="undraw_People_re_8spw.png" alt="Imagem 2">
+            <button>R$6,00</button>
+        </div>
+        <div class="itens" onclick="abrirModal('300 SEGUIDORES', 'R$9,00')">
+            <h1>300 SEGUIDORES</h1>
+            <img src="undraw_People_re_8spw.png" alt="Imagem 3">
+            <button>R$9,00</button>
+        </div>
+        <div class="itens" onclick="abrirModal('400 SEGUIDORES', 'R$12,00')">
+            <h1>400 SEGUIDORES</h1>
+            <img src="undraw_People_re_8spw.png" alt="Imagem 1">
+            <button>R$12,00</button>
+        </div>
+        <div class="itens" onclick="abrirModal('500 SEGUIDORES', 'R$15,00')">
+            <h1>500 SEGUIDORES</h1>
+            <img src="undraw_People_re_8spw.png" alt="Imagem 2">
+            <button>R$15,00</button>
+        </div>
+        <div class="itens" onclick="abrirModal('600 SEGUIDORES', 'R$18,00')">
+            <h1>600 SEGUIDORES</h1>
+            <img src="undraw_People_re_8spw.png" alt="Imagem 3">
+            <button>R$18,00</button>
+        </div>
+        <div class="itens" onclick="abrirModal('700 SEGUIDORES', 'R$21,00')">
+            <h1>700 SEGUIDORES</h1>
+            <img src="undraw_People_re_8spw.png" alt="Imagem 3">
+            <button>R$21,00</button>
+        </div>
+        <div class="itens" onclick="abrirModal('800 SEGUIDORES', 'R$24,00')">
+            <h1>800 SEGUIDORES</h1>
+            <img src="undraw_People_re_8spw.png" alt="Imagem 3">
+            <button>R$24,00</button>
+        </div>
+        <div class="itens" onclick="abrirModal('900 SEGUIDORES', 'R$27,00')">
+            <h1>900 SEGUIDORES</h1>
+            <img src="undraw_People_re_8spw.png" alt="Imagem 3">
+            <button>R$27,00</button>
+        </div>
+        <div class="itens" onclick="abrirModal('1.000 SEGUIDORES', 'R$30,00')">
+            <h1>1.000 SEGUIDORES</h1>
+            <img src="undraw_People_re_8spw.png" alt="Imagem 3">
+            <button>R$30,00</button>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="modal" class="modal" onclick="fecharModal()">
+        <div class="modal-content" onclick="event.stopPropagation();">
+            <h1 id="modal-nome"></h1>
+            <img src="undraw_People_re_8spw.png" alt="" srcset="">
+            <p id="modal-preco"></p>
+            <button class="close-btn" onclick="fecharModal()">Confirmar</button>
+        </div>
+    </div>
+
+    <script>
+        var ordemCrescente = true;
+        var nomeProduto = "";
+        var precoProduto = "";
+
+        function alternarOrdenacao() {
+            ordemCrescente = !ordemCrescente;
+            ordenarPorPreco();
+        }
+
+        function ordenarPorPreco() {
+            var produtosContainer = document.getElementById("produtosContainer");
+            var itens = produtosContainer.querySelectorAll(".itens");
+
+            var itensArray = Array.from(itens);
+
+            itensArray.sort(function(a, b) {
+                var precoA = parseFloat(a.querySelector("button").innerText.replace("R$", ""));
+                var precoB = parseFloat(b.querySelector("button").innerText.replace("R$", ""));
+                return ordemCrescente ? precoA - precoB : precoB - precoA;
+            });
+
+            itensArray.forEach(function(item) {
+                produtosContainer.removeChild(item);
+            });
+
+            itensArray.forEach(function(item) {
+                produtosContainer.appendChild(item);
+            });
+        }
+
+        function abrirModal(nome, preco) {
+            nomeProduto = nome;
+            precoProduto = preco;
+            document.getElementById("modal-nome").innerText = nome;
+            document.getElementById("modal-preco").innerText = preco;
+            document.getElementById("modal").style.display = "flex";
+        }
+
+        function fecharModal() {
+            document.getElementById("modal").style.display = "none";
+            window.location.href = "finalizar.html?produto=" + encodeURIComponent(nomeProduto) + "&preco=" + encodeURIComponent(precoProduto);
+        }
+    </script>
+</body>
+</html>

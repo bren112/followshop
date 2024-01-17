@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/ico/undraw_People_re_8spw_resized.ico" type="image/x-icon">
+    <title>FOLLOWSHOP</title>
+    <style>    
+        body {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            background-color: rgb(207, 207, 207);
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .itens {
+            background-color: white;
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 10px;
+            width: 250px;
+            cursor: pointer;
+            height: 20pc;
+        }
+        h1 {
+            margin-top: 20px;
+            color: rgb(240, 17, 155);
+        }
+        #img {
+            width: 100%;
+            height: auto;
+            max-width: 200px;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            background-color: rgb(240, 17, 155);
+            color: white;
+            border-radius: 5px;
+        }
+        svg{
+            color: white;
+        }
+        .fixed-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+        }
+        .container {
+            display: flex;
+            justify-content: space-around;
+        }
+   
+
+        form {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .inputs {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid black;
+            border-radius: 5px;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus {
+            border-color: rgb(240, 17, 155);
+        }
+
+        input[type="file"] {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid black;
+            border-radius: 5px;
+            margin-top: 10px;
+            transition: border-color 0.3s;
+        }
+
+        input[type="file"]:focus {
+            border-color: rgb(240, 17, 155);
+        }
+
+        input[type="submit"] {
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            background-color: rgb(240, 17, 155);
+            color: white;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #ff66b2;
+        }
+
+            #pix{
+                width: 40pc;
+
+            }
+      
+        @media (max-width :773px){
+
+            .container{
+                display: flex;
+                flex-direction: column;
+            }
+            #pix{
+                width: 30pc;
+
+            }
+    
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center; font-size: 3pc;">Detalhes da Compra</h1>
+    <br>
+
+    <button class="fixed-button" onclick="direcionar()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+            <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"/>
+        </svg>
+    </button>
+
+    <div class="container">
+        <div class="itens">
+            <div id="detalhesProduto">
+                <h1 id="produtoEscolhido"></h1>
+                <img src="undraw_People_re_8spw.png" alt="" srcset="" id="img">
+            </div>
+        </div>
+        <div class="dir">
+            <form action="https://api.sheetmonkey.io/form/htwX9ZSEt4i8buykKzLNbJ" method="post">
+                <h1 style="text-align: center;">INFORMAÇÕES</h1> <br>
+                <div class="inputs">
+                    <input type="text" placeholder="Nome Completo" name="Nome">
+                    <input type="text" placeholder="Número Celular" name="Telefone">
+                    <input type="text" placeholder="@instagram" name="Instagram">
+                   
+                  
+                
+                    <input type="text" id="precoProduto" name="Valor da Compra" readonly>
+                    <p>Comprovante pix</p>
+                    <input type="file" placeholder="comprovante " name="Comprovante">
+                    <input type="submit" value="ENVIAR" />
+                </div>
+            </form>
+            <br> 
+            <h1 style="text-align: center;">CHAVE PIX</h1>
+            <div class="img" style="display: flex; justify-content: center;">
+            <img src="qrcode-pix.png" alt="" srcset="" id="pix">
+        </div>
+        </div>
+    </div>
+
+    <script>
+        function obterParametroDaURL(nomeParametro) {
+            var urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(nomeParametro);
+        }
+
+        var produtoEscolhido = obterParametroDaURL("produto");
+        var precoProduto = obterParametroDaURL("preco");
+
+        document.getElementById("produtoEscolhido").innerText = " " + produtoEscolhido;
+        document.getElementById("precoProduto").value = " " + precoProduto;
+
+        function direcionar() {
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>
